@@ -1,0 +1,118 @@
+doctype html
+html
+    head
+        link(rel="stylesheet" href="../../../Manifest/bootstrap/css/bootstrap.min.css")
+        link(rel="stylesheet" href="../../../Manifest/fontawesome-free-5.15.1-web/css/all.min.css")
+        link(rel="stylesheet" type="text/css" href="../../../Apps/TimeTable/local_assets/timetable.css")
+        script(src="../../../Manifest/jquery-3.4.1.js")
+        script(src="../../../bootstrap/js/bootstrap.min.js") 
+    body
+        table(class="ml-3 mt-3")
+            thead
+                tr
+                    th
+                    th(colspan="2")
+                        span(class="fas fa-edit" id="edit1")
+                        span JSS1
+                    th(colspan="2")
+                        span(class="fas fa-edit" id="edit2")
+                        span JSS2
+                    th(colspan="2")
+                        span(class="fas fa-edit" id="edit3")
+                        span JSS3
+            tbody
+                tr
+                    th Subjects
+                    td
+                        span Period #
+                    td
+                        span Teacher
+                    td
+                        span Period #
+                    td
+                        span Teacher
+                    td
+                        span Period #
+                    td
+                        span Teacher
+            - const subjects=["mathematics","english","Economics", "Business Studies", "Computer", "Civic", "Agric"]
+            each subj in subjects
+                tr
+                    th #{subj}
+                    td(class="jss1" style="text-align:center")
+                        span(class="align-middle ")
+                            i(class="fas fa-less-than hovertrans" data-class-less="jss1")
+                        span(class="d-inline-block align-middle periods align-middle " data-class="jss1" style="text-align:center") 0
+                        span(class="align-middle")
+                            i(class="fas fa-greater-than hovertrans " data-class-greater="jss1")
+                    td(style="text-align:center")
+                        span
+                            i(class="fas fa-user" style="color:#d9d4d4")
+                    td(class="jss2" style="text-align:center")
+                        span(class="align-middle ")
+                            i(class="fas fa-less-than hovertrans"  data-class-less="jss2")
+                        span(class="d-inline-block align-middle periods align-middle " data-class="jss2" style="text-align:center") 0
+                        span(class="align-middle")
+                            i(class="fas fa-greater-than hovertrans " data-class-greater="jss2")
+                    td(style="text-align:center")
+                        span
+                            i(class="fas fa-user" style="color:#d9d4d4")
+                    td(class="jss3" style="text-align:center")
+                        span(class="align-middle ")
+                            i(class="fas fa-less-than hovertrans" data-class-less="jss3")
+                        span(class="d-inline-block align-middle periods align-middle " data-class="jss3" style="text-align:center") 0
+                        span(class="align-middle")
+                            i(class="fas fa-greater-than hovertrans " data-class-greater="jss3")
+                    td(style="text-align:center")
+                        span
+                            i(class="fas fa-user" style="color:#d9d4d4")
+
+            tr
+                th
+                    span Total
+                td(style="text-align:center")
+                    span(id="totaljss1" class="align-middle") 0
+                td
+                    span
+                td(style="text-align:center")
+                    span(id="totaljss2" class="align-middle") 0
+                td
+                    span
+                td(style="text-align:center")
+                    span(id="totaljss3" class="align-middle") 0
+                td
+                    span
+
+    input(type="number", name="num_of_per" onFocusleave="" class="m-3")
+
+    .slidecontainer
+        input.slider#myRange(type="range", max="1000", min="1", value="500")
+        p Value:
+            span#demo
+
+    div(id="slider" draggable=true ondragstart="drag(event)")
+    #div1(ondrop="drop(event)", ondragover="allowdrop(event)")
+    table
+        thead
+            tr
+                - for (var x = 0; x < 3; x++)
+                td
+
+    //-div(class="bg-secondary row parentdiv")
+        - for (var x = 0; x < 3; x++)
+            div(id=x class="col container d-inline-block border border-10 border-primary resizer")
+                div(class="h-100" style="cursor:default;")
+    
+    div(class="parentaddwidth")
+        div(style="background-color:magenta;width:100px;height:100px;display: inline-block;" class="resizer")
+            div(class="h-100" style="cursor:default;")
+
+        div(class="addwidth resizer" style="display: inline-block;")
+            div(class="h-100" style="cursor:default;")
+
+        div(style="width:100px;height:100px;display: inline-block;background-color:cyan" class="resizer")
+            div(class="h-100" style="cursor:default;")
+    
+    input(type="button", value="Generate" class="btn m-3" onClick="generateTimetable()")
+    script(src="../../../Apps/TimeTable/client_scripts/client.js")
+    script(src="../../../Apps/TimeTable/client_scripts/resize.js")

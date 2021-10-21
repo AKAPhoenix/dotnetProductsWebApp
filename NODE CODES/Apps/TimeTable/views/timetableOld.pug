@@ -1,0 +1,68 @@
+doctype html
+html
+    head
+        link(rel="stylesheet" href="../../../Manifest/bootstrap/css/bootstrap.min.css")
+        link(rel="stylesheet" href="../../../Manifest/fontawesome-free-5.15.1-web/css/all.min.css")
+        link(rel="stylesheet" type="text/css" href="../../../Apps/TimeTable/local_assets/timetable.css")
+        script(src="../../../Manifest/jquery-3.4.1.js")
+        script(src="../../../bootstrap/js/bootstrap.min.js") 
+    body
+    form(action="")
+        div(class=".row")
+            div(class="col-3 d-inline-block rounded-sm" style="height: 100px; background-color: rgba(255,0,0,0.1);") Subjects
+            div(class="col-2 d-inline-block rounded-sm")
+                span(class="fas fa-edit" id="edit1")
+                span JSS1
+            div(class="col-2 d-inline-block rounded-sm")
+                span(class="fas fa-edit" id="edit2")
+                span JSS2
+            div(class="col-2 d-inline-block rounded-sm")
+                span(class="fas fa-edit" id="edit3")
+                span JSS3
+
+        - const subjects=["mathematics","english","Economics", "Business Studies", "Computer", "Civic", "Agric"]
+        each subj in subjects
+            div(class="row")
+                div(class="d-inline-block rounded-sm col-3") 
+                    span #{subj}
+                div(class="d-block rounded-sm col-2 row" style="height: 50px; background-color: rgba(255,0,0,0.1);")
+                    div(class="d-inline rounded-sm col-2 jss1")
+                        span(class="align-middle ")
+                            i(class="fas fa-less-than hovertrans" data-class-less="jss1")
+                    div(class="d-inline rounded-sm col-2")
+                        span(class="d-inline-block align-middle periods align-middle " data-class="jss1" style="text-align:center") 0
+                    div(class="d-inline rounded-sm col-2 jss1")
+                        span(class="align-middle")
+                            i(class="fas fa-greater-than hovertrans " data-class-greater="jss1")
+                            
+                div(class="d-block rounded-sm col-2 row" style="height: 50px; background-color: rgba(255,0,0,0.1);")
+                    div(class="d-inline rounded-sm col-2 jss2")
+                        span(class="align-middle ")
+                            i(class="fas fa-less-than hovertrans"  data-class-less="jss2")
+                    div(class="d-inline rounded-sm col-2")
+                        span(class="d-inline-block align-middle periods align-middle " data-class="jss2" style="text-align:center") 0
+                    div(class="d-inline rounded-sm col-2 jss2")
+                        span(class="align-middle")
+                            i(class="fas fa-greater-than hovertrans " data-class-greater="jss2")
+
+                div(class="d-block rounded-sm col-2 row" style="height: 50px; background-color: rgba(255,0,0,0.1);")
+                    div(class="d-inline rounded-sm col-2 jss3")
+                        span(class="align-middle ")
+                            i(class="fas fa-less-than hovertrans" data-class-less="jss3")
+                    div(class="d-inline rounded-sm col-2")
+                        span(class="d-inline-block align-middle periods align-middle " data-class="jss3" style="text-align:center") 0
+                    div(class="d-inline rounded-sm col-2 jss3")
+                        span(class="align-middle")
+                            i(class="fas fa-greater-than hovertrans " data-class-greater="jss3")
+
+        div(class="d-block rounded-sm row" style="height: 50px; background-color: rgba(255,0,0,0.1);")
+            div(class="d-inline-block rounded-sm col-3") Total
+            div(class="d-inline rounded-sm col-3" )
+                span(class="font-weight-bold" id="totaljss1") 0
+            div(class="d-inline rounded-sm  col-3" )
+                span(id="totaljss2") 0
+            div(class="d-inline rounded-sm col-3")
+                span(id="totaljss3") 0
+
+        
+    script(src="../../../Apps/TimeTable/client_scripts/client.js")
