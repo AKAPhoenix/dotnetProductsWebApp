@@ -1,0 +1,88 @@
+.hovertrans{
+    transition: transform .2s
+}
+.hovertrans:hover{
+    transform: scale(1.5);
+    cursor: pointer
+}
+.hovertrans:active{
+    transform: scale(2)
+}
+.dummy{
+    visibility: hidden;
+}
+/*input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 32px;
+    width: 32px;
+    background: goldenrod;
+    background: url('./Images/Slider.png') no-repeat;
+    margin-top: -15px;
+    border-radius: 0 !important;
+  
+}
+
+input[type=range]+.thumb {
+    background-color: #FF8A80 !important;
+}
+input[type=range]+.thumb.active{
+  top: -35px !important;
+}
+*/
+input[type=range] {
+    -webkit-appearance: none;
+    height: 50px;
+    width: 500px;
+
+}
+input[type=range]::-webkit-slider-runnable-track {
+    background: blueviolet /* ...change color with background property... */;
+    height: 20px;
+    width: 500px;
+    /* ...my custom edits...*/
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none !important;
+    /*appearance: none !important;*/
+    border: 1px solid #000000;
+    background: #d40f0f;
+    height: 90px;
+    width: 25px;
+    /*
+    border-radius: 3px;
+    background: url('./Images/Slider.png') no-repeat;
+    cursor: pointer;
+    margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+    /*box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d; /* Add cool effects to your sliders! */
+    /*z-index: 99;
+    */
+  }
+  .parentaddwidth{
+    width:310px;height:110px;/*display: flex;flex-direction: row;justify-content: center; */
+  }
+  .addwidth{
+    width: 100px;;
+    height: 100px;
+    background-color: crimson;
+     display: inline-block; 
+     
+  }
+/*    .parentdiv{
+      /*position:absolute;
+      height: 120px;
+      width:500px
+  }
+ */  .resizer{
+      width: 100px;
+      height: 100px;
+      cursor:ew-resize; 
+      text-align: justify;
+      border: 5px solid green;
+      border-collapse: collapse;
+      /*position:absolute*/
+  }
+  .resizer:hover{
+    border: 5px solid yellow
+  }
+ 
