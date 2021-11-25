@@ -1,3 +1,6 @@
+body{
+    margin-left: 1.5rem;
+}
 .hovertrans{
     transition: transform .2s
 }
@@ -86,3 +89,18 @@ input[type=range]::-webkit-slider-thumb {
     border: 5px solid yellow
   }
  
+  .num{
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+  }
+
+  #gen_table{
+      display: block;
+     /* margin-top: 2rem;*/
+     /* margin-left: 2rem;*/
+  }
+
+  .num_group{
+      /*margin-left: 2rem;*/
+      margin-bottom: 2rem;
+  }

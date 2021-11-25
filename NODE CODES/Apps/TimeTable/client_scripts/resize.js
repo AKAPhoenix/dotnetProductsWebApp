@@ -269,14 +269,6 @@ function generateEmptyTable(){
     var rows=5
     
 }
-function generateTable(){
-    ele_values=[]
-    time_elements=Object.values(document.querySelectorAll('.resizer>.h-100'))
-    for(ele of time_elements){
-        ele_values.push(ele.innerText)
-    }
-
-}
 /*function resize(){
     console.log('i am moving')
     e.style.width = e.clientX - element.getBoundingClientRect().left + 'px'
