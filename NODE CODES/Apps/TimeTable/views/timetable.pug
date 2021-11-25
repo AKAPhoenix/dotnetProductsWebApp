@@ -13,13 +13,13 @@ html
                     th
                     th(colspan="2")
                         span(class="fas fa-edit" id="edit1")
-                        span JSS1
+                        span(class="classes") JSS1
                     th(colspan="2")
                         span(class="fas fa-edit" id="edit2")
-                        span JSS2
+                        span(class="classes") JSS2
                     th(colspan="2")
                         span(class="fas fa-edit" id="edit3")
-                        span JSS3
+                        span(class="classes") JSS3
             tbody
                 tr
                     th Subjects
@@ -38,7 +38,7 @@ html
             - const subjects=["mathematics","english","Economics", "Business Studies", "Computer", "Civic", "Agric"]
             each subj in subjects
                 tr
-                    th #{subj}
+                    th(class="subjects") #{subj}
                     td(class="jss1" style="text-align:center")
                         span(class="align-middle ")
                             i(class="fas fa-less-than hovertrans" data-class-less="jss1")
@@ -98,10 +98,18 @@ html
                 - for (var x = 0; x < 3; x++)
                 td
 
+    .num_group 
+        div(class="num") Number of periods
+        input#max_period(type="number" min=0)
+    
     //-div(class="bg-secondary row parentdiv")
         - for (var x = 0; x < 3; x++)
             div(id=x class="col container d-inline-block border border-10 border-primary resizer")
                 div(class="h-100" style="cursor:default;")
+    
+    .num_group 
+        div(class="num") Maximum period
+        input#max_per(type="number" min=0)
     
     div(class="parentaddwidth")
         div(style="background-color:magenta;width:100px;height:100px;display: inline-block;" class="resizer")
@@ -113,6 +121,13 @@ html
         div(style="width:100px;height:100px;display: inline-block;background-color:cyan" class="resizer")
             div(class="h-100" style="cursor:default;")
     
-    input(type="button", value="Generate" class="btn m-3" onClick="generateTimetable()")
+    .num_group 
+        div(class="num") Number of days
+        input.rows.primary(type="number" min=0)
+    button.btn.btn-primary(type="button" onClick="generateTable()" id="gen_table") Generate Table
+
+
+    input(type="button", value="Generate" class="btn m-3" onClick="generateTable()")
     script(src="../../../Apps/TimeTable/client_scripts/client.js")
     script(src="../../../Apps/TimeTable/client_scripts/resize.js")
+    script(src="../../../Apps/TimeTable/client_scripts/generateTable.js") 

@@ -22,8 +22,9 @@
     "zapier-platform-core": "8.0.1"
   },
   "devDependencies": {
-    "nodemon": "^2.0.6",
+    "jest": "^27.3.1",
     "mocha": "^5.2.0",
+    "nodemon": "^2.0.6",
     "should": "^13.2.0"
   }
 }
