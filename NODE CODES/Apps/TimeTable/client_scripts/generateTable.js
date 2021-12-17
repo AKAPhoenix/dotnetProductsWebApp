@@ -14,6 +14,7 @@ function generateTable(){
         this.day_subjects=[]
         this.class=class_n
         this.subj_arr=arr_sub
+        this.week_days={}
     }
     
 /*  
@@ -83,12 +84,25 @@ subjects object form
     var np
     //table.appendChild(body)
     console.log('rows is '+rows)
+    var row_arr=[];
+    var rnd;i=0;
+    while (i<rows){
+        rnd=Math.floor(Math.random()*(rows));console.log(rnd);
+        if(row_arr.find(a=>a==rnd)==undefined){
+            row_arr.push(rnd);i++
+        }
+        
+    }
+
     for (i=0;i<rows;i++){
+        var day=row_arr.pop()
+
                 for (obj of obj_arr){
-                    tr=document.createElement('tr')
+/*                  tr=document.createElement('tr')
                     td=document.createElement('td')
                     td.innerText=obj.class
                     tr.appendChild(td)
+ */                    
                     console.log('count is '+count+'\n' + 'periods length is '+periods )
                     var total_time=0;
                     for(key in obj.subjects){
@@ -152,7 +166,8 @@ subjects object form
                                         //decrement subject
                                         obj.subjects[obj.subj_arr[rs]]--
                                         obj.day_subjects.push(obj.subj_arr[rs])
-    
+                                        count++
+
                                         if(obj.subjects[obj.subj_arr[rs]]==0){
                                             //remove the subject
                                             var index = rs;
@@ -160,7 +175,9 @@ subjects object form
                                             break
                                         }
     
-                                        count++
+                                        if(count>periods){
+                                            break
+                                        }
                                     }
                                 }
                             }
@@ -180,16 +197,48 @@ subjects object form
  */                                                        
                         }
                     }
+                    obj.week_days[day]=obj.day_subjects;
                     count=0
-                    for(kk=0;kk<periods;kk++){
-                        td=document.createElement('td')
-                        td.innerText=obj.day_subjects[kk]
-                        tr.appendChild(td) 
-                    }
-                    tbody.appendChild(tr)
                     obj.day_subjects=[]
                 }
     }
+
+    tr=document.createElement('tr')
+    for (obj of obj_arr){
+        for (i=0;i<rows;i++){
+            for (j=0;j<=periods+1;j++){
+                td=document.createElement('td')
+                tr.appendChild(td) 
+            }
+            tbody.appendChild(tr)
+            tr=document.createElement('tr')
+            //removeChild(tr)
+        }
+    }
+    i=0; j=0;k=0;
+        for (obj of obj_arr){
+            var new_obj={};
+            Object.keys(obj.week_days).sort((a,b)=>a-b).forEach(val=>{
+                new_obj[val]=obj.week_days[val]
+            })
+            obj.week_days=new_obj;
+            for(key in obj.week_days){
+                for(ele of obj.week_days[key]){
+                    tbody.children[i].children[j+1].innerText=ele
+                    j++
+                }
+                j=0
+                tbody.children[i].children[j].innerText=obj.class
+                i=i+obj_arr.length
+            }
+            k++;
+            i=k
+        }   
     table.appendChild(tbody)
     document.body.appendChild(table)
 }
+/* function removeChild(tr){
+    while (tr.firstElementChild!=null){
+        tr.removeChild(tr.children[0])
+    }
+} */
