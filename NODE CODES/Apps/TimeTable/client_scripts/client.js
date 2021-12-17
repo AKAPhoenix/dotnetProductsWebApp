@@ -159,6 +159,9 @@ output.innerHTML = slider.value;
 slider.oninput = function() {
   output.innerHTML = this.value;
 }
+
+
+
 /*var num_of_per=document.querySelector('[name=num_of_per]')
 num_of_per.addEventListener('onfocusout',(event)=>{
 
