@@ -38,7 +38,9 @@ obj_arr=[]
             else{
                 sub_name=per.parentElement.parentElement.firstElementChild.innerText
                 OBSB[sub_name]=parseInt(per.innerText)
-                ARSB.push(sub_name)
+                for(i=0;i<parseInt(per.innerText);i++){
+                    ARSB.push(sub_name)
+                }
                 console.log('sub_name'+sub_name)
             }
         }
@@ -85,7 +87,7 @@ subjects object form
     //table.appendChild(body)
     console.log('rows is '+rows)
     var row_arr=[];
-    var rnd;i=0;
+    var rnd;i=0;var sub_rs;
     while (i<rows){
         rnd=Math.floor(Math.random()*(rows));console.log(rnd);
         if(row_arr.find(a=>a==rnd)==undefined){
@@ -113,7 +115,9 @@ subjects object form
                         obj.subjects.empty_periods=empty_per;
                         var ind_find = obj.subj_arr.findIndex(item => item == "empty_periods")
                         if(ind_find==-1){
-                            obj.subj_arr.push('empty_periods')
+                            for(ij=0;ij<empty_per;ij++){
+                                obj.subj_arr.push('empty_periods')
+                            }
                         }
                     }
                     while(count<=periods){
@@ -129,6 +133,10 @@ subjects object form
                             np=Math.floor(Math.random()*max_per)+1
 
                             console.log('count is less than periods '+periods)
+                            //we want to avoid a scenario such as this
+                            //[english,computer,english], english has to be consecutive
+                            //and less than max_per. This will be coded after commiting
+                            //this functional app
 
                             //if the subject is not in that day
                             var num=0;
@@ -142,20 +150,22 @@ subjects object form
                                 if(np==1){
                                     console.log('rs is '+rs)
                                     console.log('np is '+np)
+                                    sub_rs=obj.subj_arr[rs];
                                     obj.day_subjects.push(obj.subj_arr[rs])
                                     console.log('Before obj.subjects[obj.subj_arr[rs]] '+obj.subjects[obj.subj_arr[rs]])
                                     //decrement subject
                                     obj.subjects[obj.subj_arr[rs]]--
-    
+                                    obj.subj_arr.splice(rs , 1); 
                                     console.log('After obj.subjects[obj.subj_arr[rs]] '+obj.subjects[obj.subj_arr[rs]])
                                     
-                                    if(obj.subjects[obj.subj_arr[rs]]==0){
+                                    if(obj.subjects[sub_rs]==0){
                                         //remove the subject
-                                        var index = rs;
+/*                                         var index = rs;
                                         if(index !== -1) { console.log('before '+ obj.subj_arr);
                                         obj.subj_arr.splice(index , 1); 
                                         console.log('After '+ obj.subj_arr);
-                                        } 
+                                        }
+ */                                         
                                     }
                                 count++
                                 }
@@ -163,21 +173,33 @@ subjects object form
                                     console.log('np ' +np + ' is greater than one')
                                     for(ss=0;ss<np;ss++){
                                         console.log('rs is '+rs)
+                                        sub_rs=obj.subj_arr[rs];
                                         //decrement subject
                                         obj.subjects[obj.subj_arr[rs]]--
                                         obj.day_subjects.push(obj.subj_arr[rs])
+                                        obj.subj_arr.splice(rs , 1); 
                                         count++
 
-                                        if(obj.subjects[obj.subj_arr[rs]]==0){
+                                        if(obj.subjects[sub_rs]==0){
                                             //remove the subject
-                                            var index = rs;
+/*                                             var index = rs;
                                             if(index !== -1) { obj.subj_arr.splice(index , 1); } 
+ */                                            
                                             break
                                         }
-    
-                                        if(count>periods){
+                                        if(count>periods||obj.subj_arr.length==0){
                                             break
                                         }
+                                        var reduce=obj.day_subjects.reduce(function(acc,val){
+                                            if(val==obj.subj_arr[rs]){
+                                                num++
+                                            }
+                                            return num
+                                        },0)
+                                        if(reduce>=max_per ){
+                                            break
+                                        }
+                                        rs=Math.floor(Math.random()*(obj.subj_arr.length))
                                     }
                                 }
                             }
