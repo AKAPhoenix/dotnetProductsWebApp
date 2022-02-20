@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\dummy.cshtml" />
+    <Content Remove="Pages\Products\ProductsList.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Products\ProductsList.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\dummy.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Products\ProductsList.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\dummy.cshtml" />
+    <None Include="Pages\Products\ProductsList.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\dummy.cshtml" />
+  </ItemGroup>
+
+</Project>
