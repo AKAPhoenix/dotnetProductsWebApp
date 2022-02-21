@@ -15,7 +15,7 @@ mergedeep(dpd1,dpd4)
 // dpd.app.use(express.static(__dirname ));
 __dirname=__dirname.slice(0,__dirname.lastIndexOf(dpd1.path.sep))
 console.log('__dirname = '+ __dirname)
-//dpd1.app.use(dpd1.express.static(__dirname ));
+dpd1.app.use(dpd1.express.static(__dirname ));
 dpd1.app.set('views', [dpd1.path.join(__dirname, '/Apps/Amazon/views'),
                        dpd1.path.join(__dirname, '/Apps/BetScrape/views'),
                        dpd1.path.join(__dirname, '/Apps/TimeTable/views'),

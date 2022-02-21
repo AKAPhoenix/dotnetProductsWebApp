@@ -137,10 +137,7 @@ subjects object form
                             //[english,computer,english], english has to be consecutive
                             //and less than max_per. This will be coded after commiting
                             //this functional app
-                            if(obj.subj_arr[rs]!="empty_periods" && obj.day_subjects.find(val=>val==obj.subj_arr[rs])&&
-                               obj.day_subjects[obj.day_subjects.length-1]!=obj.subj_arr[rs]){
-                                continue
-                            }
+
                             //if the subject is not in that day
                             var num=0;
                             var reduce=obj.day_subjects.reduce(function(acc,val){
