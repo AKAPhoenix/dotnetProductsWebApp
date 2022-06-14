@@ -1,0 +1,21 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model RoleForUser
+<div class="message">
+    @ViewBag.CreateRoleForUserResult
+</div>
+<form asp-action="CreateRoleForUserPost">
+    <div class="form-group">
+        <label asp-for=Role class="col-lg-4 col-md-3">Role</label>
+        <input asp-for=Role />
+    </div>
+    <div class="form-group">
+        <label asp-for=Email class="col-lg-4 col-md-3">Email</label>
+        <input asp-for=Email />
+    </div>
+    <button type="submit" class="btn btn-success"> Create Role</button>
+</form>

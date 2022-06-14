@@ -1,0 +1,125 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Mini_Library_Project Admin View</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        .Box{
+            border:2px blue;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Mini_Library_Project</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <nav class="d-lg-block">
+        <div class="Box">
+            <div>
+                <a asp-action="RemoveUserFromRolePost" asp-controller="Admin" class="">Remove Role From User</a>
+            </div>
+            <div>
+                <a asp-action="CreateRoleForUserPost" asp-controller="Admin">Add Role To User</a>
+            </div>
+        </div>
+
+        <br />
+        <br />
+
+        <div class="Box">
+            <div>
+                <a asp-action="AddRole" asp-controller="Admin">Add Role </a>
+            </div>
+            <div>
+                <a asp-action="RemoveRole" asp-controller="Admin">Remove Role </a>
+            </div>
+        </div>
+
+        <br />
+        <br />
+
+        <div class="Box">
+            <div>
+                <a asp-action="ListRoles" asp-controller="Admin">See Roles </a>
+            </div>
+        </div>
+
+        <br />
+        <br />
+
+        <div class="Box">
+            <div>
+                <a asp-action="ListUsers" asp-controller="Admin">See Users and Their Roles </a>
+            </div>
+        </div>
+
+        <br />
+        <br />
+
+        <div class="Box">
+            <div>
+                <a asp-action="AddBooks" asp-controller="BookManager">Add Books </a>
+            </div>
+        </div>
+
+        <br />
+        <br />
+
+        <div class="Box">
+            <div>
+                <a asp-action="AddAuthor" asp-controller="AuthorManager">Add Author </a>
+            </div>
+        </div>
+
+        <br />
+        <br />
+
+        <div class="Box">
+            <div>
+                <a asp-action="ListBooksAndAuthors" asp-controller="BookManager">See All Books and their Author </a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - Mini_Library_Project - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,37 @@
+﻿@using Microsoft.AspNetCore.Identity
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@inject SignInManager<UserCredentials> signinmanager
+@{
+    Layout = "~/Views/Shared/_LayoutLibraryHome.cshtml";
+    var user = User;
+    
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to the Library Reading Project</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">Find books, Order books, Read books and see your progress</a>.</p>
+</div>
+
+@if (!signinmanager.IsSignedIn(User))
+{
+    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+        <ul class="navbar-nav flex-grow-1">
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="LoginForm">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="" asp-controller="SignUp" asp-action="SignUp">Sign Up</a>
+            </li>
+        </ul>
+     </div>
+}
+else
+{
+    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+        @User.Identity.Name
+    </div>
+}

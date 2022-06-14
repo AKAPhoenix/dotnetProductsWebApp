@@ -1,0 +1,30 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model List<Book>
+<br />
+<br />
+       <div class=row>
+            <h3 class="col-lg-3 col-md-3">
+                Title
+            </h3>
+            <h3 class="col-lg-3 col-md-3">
+                Authorname
+            </h3>
+       </div>
+@foreach (var user in Model)
+{
+       <div class=row>
+            <div class="col-lg-3 col-md-3" >
+                @user.Title
+            </div>
+            @if (@user.Author!=null){
+                <div class="col-lg-3 col-md-3">
+                    @user.Author.Name
+                </div>
+            }
+       </div>
+}

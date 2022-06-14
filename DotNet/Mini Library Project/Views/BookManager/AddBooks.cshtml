@@ -1,0 +1,33 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@inject AppDBContext<UserCredentials> context
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var authors=context.Authors.Select(x=>new SelectListItem() 
+                                  {
+                                      Text = x.Name.ToString()
+                                  });
+}
+@model BookHelper
+<div>
+    @ViewBag.BookAdded
+</div>
+<form action=AddBooks method="post">
+    <div class="form-group row">
+        <label asp-for=Title class=" col-lg-2 col-md-2">Title</label>
+        <input asp-for=Title class=" col-lg-4 col-md-4"/>
+    </div>
+@*    <div class="form-group row">
+        <label asp-for=AuthorName class=" col-lg-2 col-md-2">Author</label>
+        <input asp-for=AuthorName class=" col-lg-4 col-md-4"/>
+    </div>
+*@
+    <div class="form-group row">
+        <label asp-for=AuthorName class=" col-lg-2 col-md-2">Author</label>
+        <select asp-for=AuthorName asp-items=authors class=" col-lg-4 col-md-4">
+            <option value="">Select Author Name</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-success">Add This Book</button>
+</form>
